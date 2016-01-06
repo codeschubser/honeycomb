@@ -30,7 +30,7 @@
  * @license     http://www.opensource.org/licenses/mit-license.html  MIT License
  * @version     $Id: load.php,v 0.0.1 06.01.2016 09:56:49 mitopp Exp $;
  */
-if ( !defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) )
     define( 'ABSPATH', dirname( dirname( __FILE__ ) ) );
 
 error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
@@ -47,7 +47,10 @@ if ( file_exists( ABSPATH . '/config.php' ) ) {
 require_once( ABSPATH . '/includes/defaults.php' );
 require_once( ABSPATH . '/includes/compat.php' );
 require_once( ABSPATH . '/includes/functions.php' );
-
+/**
+ * Start global timer
+ */
+timer_start();
 /**
  * Check requirements or die are not met.
  */
