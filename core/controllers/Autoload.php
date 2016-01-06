@@ -82,5 +82,14 @@ namespace de\codeschubser\honeycomb\core\controllers;
  */
 class Autoload
 {
-
+    /**
+     * An associative array where the key is a namespace prefix and the value
+     * is an array of base directories for classes in that namespace.
+     *
+     * @since   0.0.1
+     *
+     * @access  protected
+     * @var     array
+     */
+    protected $prefixes = array();
 }
