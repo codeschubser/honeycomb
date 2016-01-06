@@ -78,7 +78,7 @@ function timer_start( $name = 'global' )
  *
  * @since   0.0.1
  *
- * @see     timer_start()
+ * @see     timer_start(), number_format_i18n()
  *
  * @access  private
  * @global  array   $timers     Array of timers with unix timestamp.
@@ -104,4 +104,21 @@ function timer_stop( $name = 'global', $display = false, $precision = 3 )
     }
 
     return false;
+}
+/**
+ * Convert integer number to format based on the locale.
+ *
+ * @since   0.0.1
+ *
+ * @access  private
+ * @param   int     $number     The number to convert based on locale.
+ * @param   int     $decimals   Optional. Precision of the number of decimal places. Default: 0.
+ * @return  string  Converted number in string format.
+ */
+function number_format_i18n( $number, $decimals = 0 )
+{
+    $locale = localeconv();
+
+    return number_format( $number, abs( intval( $decimals ) ), $locale['decimal_point'],
+        $locale['thousands_sep'] );
 }
