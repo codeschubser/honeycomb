@@ -30,3 +30,7 @@
  * @license     http://www.opensource.org/licenses/mit-license.html  MIT License
  * @version     $Id: defaults.php,v 0.0.1 06.01.2016 09:56:04 mitopp Exp $;
  */
+/**
+ * Requirements
+ */
+define( 'REQUIRED_PHP_VERSION', '5.4' );
