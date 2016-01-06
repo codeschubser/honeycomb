@@ -138,4 +138,42 @@ class Autoload
             array_push( $this->prefixes[$prefix], $base_dir );
         }
     }
+    /**
+     * Loads the class file for a given class name.
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @param   string  $class  The fully-qualified class name.
+     * @return  mixed   The mapped file name on success, or boolean false on failure.
+     */
+    public function loadClass( $class )
+    {
+        // the current namespace prefix
+        $prefix = $class;
+
+        // work backwards through the namespace names of the fully-qualified
+        // class name to find a mapped file name
+        while ( false !== $pos = strrpos( $prefix, '\\' ) ) {
+
+            // retain the trailing namespace separator in the prefix
+            $prefix = substr( $class, 0, $pos + 1 );
+
+            // the rest is the relative class name
+            $relative_class = substr( $class, $pos + 1 );
+
+            // try to load a mapped file for the prefix and relative class
+            $mapped_file = $this->loadMappedFile( $prefix, $relative_class );
+            if ( $mapped_file ) {
+                return $mapped_file;
+            }
+
+            // remove the trailing namespace separator for the next iteration
+            // of strrpos()
+            $prefix = rtrim( $prefix, '\\' );
+        }
+
+        // never found a mapped file
+        return false;
+    }
 }
