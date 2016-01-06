@@ -176,4 +176,42 @@ class Autoload
         // never found a mapped file
         return false;
     }
+    /**
+     * Load the mapped file for a namespace prefix and relative class.
+     *
+     * @since   0.0.1
+     *
+     * @access  protected
+     * @param   string  $prefix         The namespace prefix.
+     * @param   string  $relative_class The relative class name.
+     * @return  mixed   Boolean false if no mapped file can be loaded, or the name of the mapped file
+     *                  that was loaded.
+     */
+    protected function loadMappedFile( $prefix, $relative_class )
+    {
+        // are there any base directories for this namespace prefix?
+        if ( isset( $this->prefixes[$prefix] ) === false ) {
+            return false;
+        }
+
+        // look through base directories for this namespace prefix
+        foreach ( $this->prefixes[$prefix] as $base_dir ) {
+
+            // replace the namespace prefix with the base directory,
+            // replace namespace separators with directory separators
+            // in the relative class name, append with .php
+            $file = $base_dir
+                . str_replace( '\\', '/', $relative_class )
+                . '.php';
+
+            // if the mapped file exists, require it
+            if ( $this->requireFile( $file ) ) {
+                // yes, we're done
+                return $file;
+            }
+        }
+
+        // never found it
+        return false;
+    }
 }
