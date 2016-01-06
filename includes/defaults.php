@@ -34,3 +34,7 @@
  * Requirements
  */
 define( 'REQUIRED_PHP_VERSION', '5.4' );
+/**
+ * Others
+ */
+$timers = array();
