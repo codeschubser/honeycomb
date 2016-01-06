@@ -30,7 +30,7 @@
  * @license     http://www.opensource.org/licenses/mit-license.html  MIT License
  * @version     $Id: index.php,v 0.0.1 06.01.2016 10:10:32 mitopp Exp $;
  */
-if ( !defined( 'ABSPATH' ) )
+if ( ! defined( 'ABSPATH' ) )
     define( 'ABSPATH', dirname( dirname( __FILE__ ) ) );
 
 /**
