@@ -30,6 +30,19 @@
  * @license     http://www.opensource.org/licenses/mit-license.html  MIT License
  * @version     $Id: defaults.php,v 0.0.1 06.01.2016 09:56:04 mitopp Exp $;
  */
+if ( ! defined( 'ABSPATH' ) )
+    define( 'ABSPATH', dirname( dirname( __FILE__ ) ) );
+/**
+ * Debugging
+ */
+if ( ! defined( 'DEBUG' ) )
+    define( 'DEBUG', true );
+if ( ! defined( 'DEBUG_DISPLAY' ) )
+    define( 'DEBUG_DISPLAY', false );
+if ( ! defined( 'DEBUG_LOG' ) )
+    defined( 'DEBUG_LOG', true );
+if ( ! defined( 'DEBUG_LOG_FILE' ) )
+    define( 'DEBUG_LOG_FILE', ABSPATH . '/public/debug.log' );
 /**
  * Requirements
  */
