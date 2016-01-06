@@ -32,9 +32,10 @@
  */
 if ( ! defined( 'ABSPATH' ) )
     define( 'ABSPATH', dirname( dirname( __FILE__ ) ) );
-
+/**
+ * Default error reporting
+ */
 error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
-
 /**
  * Load the main configuration
  */
@@ -47,6 +48,10 @@ if ( file_exists( ABSPATH . '/config.php' ) ) {
 require_once( ABSPATH . '/includes/defaults.php' );
 require_once( ABSPATH . '/includes/compat.php' );
 require_once( ABSPATH . '/includes/functions.php' );
+/**
+ * Debug mode initialization
+ */
+debug_mode();
 /**
  * Start global timer
  */
