@@ -1,2 +1,1 @@
-# honeycomb
-Groupware written in PHP
+# Honeycomb | Groupware
