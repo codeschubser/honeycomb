@@ -30,3 +30,4 @@
  * @license     http://www.opensource.org/licenses/mit-license.html  MIT License
  * @version     $Id: index.php,v 0.0.1 06.01.2016 09:54:45 mitopp Exp $;
  */
+die( 'It seems as if your server has enabled not forwarding to the public folder. Please check the settings of the Web server.' );
