@@ -92,4 +92,17 @@ class Autoload
      * @var     array
      */
     protected $prefixes = array();
+
+    /**
+     * Register loader with SPL autoloader stack.
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @return  void
+     */
+    public function register()
+    {
+        spl_autoload_register( array( $this, 'loadClass' ) );
+    }
 }
