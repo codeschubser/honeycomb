@@ -1,5 +1,7 @@
 <?php
 
+use de\codeschubser\honeycomb\core\controllers\Autoload;
+
 /**
  * The MIT License
  *
@@ -56,6 +58,17 @@ check_requirements();
  * Debug mode initialization
  */
 debug_mode();
+/**
+ * Enqueue autoloader
+ */
+require_once( ABSPATH . '/core/controllers/Autoload.php' );
+$loader = new Autoload();
+$loader->register();
+$loader->addNamespace( 'de\codeschubser\honeycomb\core\controllers', ABSPATH . '/core/controllers' );
+$loader->addNamespace( 'de\codeschubser\honeycomb\core\exceptions', ABSPATH . '/core/exceptions' );
+$loader->addNamespace( 'de\codeschubser\honeycomb\core\models', ABSPATH . '/core/models' );
+$loader->addNamespace( 'de\codeschubser\honeycomb\core\vendors', ABSPATH . '/core/vendors' );
+$loader->addNamespace( 'de\codeschubser\honeycomb\core\views', ABSPATH . '/core/views' );
 /**
  * Start global timer
  */
