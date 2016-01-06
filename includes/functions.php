@@ -73,3 +73,35 @@ function timer_start( $name = 'global' )
     global $timers;
     $timers[$name] = microtime( true );
 }
+/**
+ * Retrieve or display the time from the start to when function is called.
+ *
+ * @since   0.0.1
+ *
+ * @see     timer_start()
+ *
+ * @access  private
+ * @global  array   $timers     Array of timers with unix timestamp.
+ * @param   string  $name       Optional. Name of the timer. Default: global
+ * @param   bool    $display    Optional. Whether to echo or return the results. Default: false
+ * @param   int     $precision  Optional. The number of digits from the right of the decimal to display. Default: 3
+ * @return  mixed   The "second.microsecond" finished time calculation. The number is formatted for
+ *                  human consumption, both localized and rounded. False on failure.
+ */
+function timer_stop( $name = 'global', $display = false, $precision = 3 )
+{
+    global $timers;
+    if ( array_key_exists( $name, $timers ) ) {
+        $timeend = microtime( true );
+        $total = $timeend - $timers[$name];
+        $output = (function_exists( 'number_format_i18n' )) ? number_format_i18n( $total, $precision ) : number_format( $total,
+                $precision );
+        if ( $display ) {
+            echo $output;
+        }
+
+        return $output;
+    }
+
+    return false;
+}
