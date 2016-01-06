@@ -56,3 +56,20 @@ function check_requirements()
         die( 'Your PHP installation appears to be missing the MySQL PDO extension wich is required by Honeycomb.' );
     }
 }
+/**
+ * Starts a micro-timer.
+ *
+ * @since   0.0.1
+ *
+ * @see     timer_stop()
+ *
+ * @access  private
+ * @global  array   $timers Array of timers with unix timestamp.
+ * @param   string  $name   Optional. Name of the timer. Default: global
+ * @return  void
+ */
+function timer_start( $name = 'global' )
+{
+    global $timers;
+    $timers[$name] = microtime( true );
+}
