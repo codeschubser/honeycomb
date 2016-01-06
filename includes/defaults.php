@@ -38,9 +38,9 @@ if ( ! defined( 'ABSPATH' ) )
 if ( ! defined( 'DEBUG' ) )
     define( 'DEBUG', true );
 if ( ! defined( 'DEBUG_DISPLAY' ) )
-    define( 'DEBUG_DISPLAY', false );
+    define( 'DEBUG_DISPLAY', true );
 if ( ! defined( 'DEBUG_LOG' ) )
-    defined( 'DEBUG_LOG', true );
+    define( 'DEBUG_LOG', true );
 if ( ! defined( 'DEBUG_LOG_FILE' ) )
     define( 'DEBUG_LOG_FILE', ABSPATH . '/public/debug.log' );
 /**
