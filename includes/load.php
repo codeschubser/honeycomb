@@ -49,6 +49,10 @@ require_once( ABSPATH . '/includes/defaults.php' );
 require_once( ABSPATH . '/includes/compat.php' );
 require_once( ABSPATH . '/includes/functions.php' );
 /**
+ * Check requirements or die are not met.
+ */
+check_requirements();
+/**
  * Debug mode initialization
  */
 debug_mode();
@@ -56,7 +60,3 @@ debug_mode();
  * Start global timer
  */
 timer_start();
-/**
- * Check requirements or die are not met.
- */
-check_requirements();
