@@ -122,3 +122,38 @@ function number_format_i18n( $number, $decimals = 0 )
     return number_format( $number, abs( intval( $decimals ) ), $locale['decimal_point'],
         $locale['thousands_sep'] );
 }
+/**
+ * Set PHP error reporting based on debug settings.
+ *
+ * When `DEBUG` is true, all PHP notices are reported. Honeycomb will also
+ * display internal notices: when a deprecated Honeycomb function, function
+ * argument, or file is used. Deprecated code may be removed from a later version.
+ *
+ * When `DEBUG_DISPLAY` is true, Honeycomb will force errors to be displayed.
+ *
+ * When `DEBUG_LOG` is true, errors will be logged to debug.log in the public directory.
+ *
+ * @since   0.0.1
+ *
+ * @access  private
+ * @return  void
+ */
+function debug_mode()
+{
+    if ( DEBUG ) {
+        error_reporting( E_ALL );
+
+        if ( DEBUG_DISPLAY ) {
+            ini_set( 'display_errors', true );
+        } else if ( null !== DEBUG_DISPLAY ) {
+            ini_set( 'display_errors', false );
+        }
+
+        if ( DEBUG_LOG ) {
+            ini_set( 'log_errors', true );
+            ini_set( 'error_log', DEBUG_LOG_FILE );
+        }
+    } else {
+        error_reporting( E_CORE_ERROR | E_CORE_WARNING | E_COMPILE_ERROR | E_ERROR | E_WARNING | E_PARSE | E_USER_ERROR | E_USER_WARNING | E_RECOVERABLE_ERROR );
+    }
+}
