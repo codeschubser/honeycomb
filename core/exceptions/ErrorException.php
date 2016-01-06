@@ -34,5 +34,25 @@ namespace de\codeschubser\honeycomb\core\exceptions;
  */
 class ErrorException extends \ErrorException
 {
-    
+    /**
+     * CONSTRUCTOR
+     *
+     * Override to make $message mandatory.
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @param   string      $message    The Exception message to throw.
+     * @param   int         $code       Optional. The Exception code. Default: 0
+     * @param   int         $severity   Optional. The severity level of the exception. Default: 1
+     * @param   string      $filename   Optional. The filename where the exception is thrown. Default: __FILE__
+     * @param   int         $lineno     Optional. The line number where the exception is thrown. Default: __LINE__
+     * @param   \Exception  $previous   Optional. The previous exception used for the exception chaining. Default: null
+     * @return  void
+     */
+    public function __construct( $message, $code = 0, $severity = 1, $filename = __FILE__,
+        $lineno = __LINE__, \Exception $previous = null )
+    {
+        parent::__construct( $message, $code, $severity, $filename, $lineno, $previous );
+    }
 }
