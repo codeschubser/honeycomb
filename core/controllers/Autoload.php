@@ -214,4 +214,21 @@ class Autoload
         // never found it
         return false;
     }
+    /**
+     * If a file exists, require it from the file system.
+     *
+     * @since   0.0.1
+     *
+     * @access  protected
+     * @param   string  $file   The file to require.
+     * @return  bool    True if the file exists, false if not.
+     */
+    protected function requireFile( $file )
+    {
+        if ( file_exists( $file ) ) {
+            require $file;
+            return true;
+        }
+        return false;
+    }
 }
