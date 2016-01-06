@@ -34,5 +34,22 @@ namespace de\codeschubser\honeycomb\core\exceptions;
  */
 class Exception extends \Exception
 {
-
+    /**
+     * CONSTRUCTOR
+     *
+     * Override to make $message mandatory.
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @param   string      $message    The Exception message to throw.
+     * @param   int         $code       Optional. The Exception code. Default: 0
+     * @param   \Exception  $previous   Optional. The previous exception used for the exception
+     *                                  chaining. Default: null
+     * @return  void
+     */
+    public function __construct( $message, $code = 0, \Exception $previous = null )
+    {
+        parent::__construct( $message, $code, $previous );
+    }
 }
