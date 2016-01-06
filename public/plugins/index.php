@@ -1,0 +1,2 @@
+<?php
+// Prevents directory listing
