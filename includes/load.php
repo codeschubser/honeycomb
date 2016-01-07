@@ -88,3 +88,7 @@ new Session();
  * Initiate Internationalization
  */
 I18N::setLocale();
+/**
+ * Set system timezone
+ */
+date_default_timezone_set( TIMEZONE );
