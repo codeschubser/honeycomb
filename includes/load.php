@@ -1,7 +1,8 @@
 <?php
 
 use de\codeschubser\honeycomb\core\controllers\Autoload,
-    de\codeschubser\honeycomb\core\controllers\Error;
+    de\codeschubser\honeycomb\core\controllers\Error,
+    de\codeschubser\honeycomb\core\models\Session;
 
 /**
  * The MIT License
@@ -78,3 +79,7 @@ timer_start();
  * Start error handler
  */
 new Error();
+/**
+ * Start session handling
+ */
+new Session();
