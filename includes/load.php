@@ -2,7 +2,8 @@
 
 use de\codeschubser\honeycomb\core\controllers\Autoload,
     de\codeschubser\honeycomb\core\controllers\Error,
-    de\codeschubser\honeycomb\core\models\Session;
+    de\codeschubser\honeycomb\core\models\Session,
+    de\codeschubser\honeycomb\core\models\I18N;
 
 /**
  * The MIT License
@@ -83,3 +84,7 @@ new Error();
  * Start session handling
  */
 new Session();
+/**
+ * Initiate Internationalization
+ */
+I18N::setLocale();
