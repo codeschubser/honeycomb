@@ -53,4 +53,157 @@ class DateTime extends \DateTime
 
         parent::__construct( $time, $timezone );
     }
+    /**
+     * Returns a short formatted date from timezone.
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @static
+     * @param   mixed   $date   Optional. Timestamp or formatted date time. Default: null
+     * @return  string  Formatted date.
+     */
+    public static function getShortDate( $date = null )
+    {
+        $timestamp = self::getTimestampFromFormat( $date );
+        return strftime( '%x', $timestamp );
+    }
+    /**
+     * Returns a short formatted time from timezone.
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @static
+     * @param   mixed   $time   Optional. Timestamp or formatted date time. Default: null
+     * @return  string  Formatted time.
+     */
+    public static function getShortTime( $time = null )
+    {
+        $timestamp = self::getTimestampFromFormat( $time );
+        return strftime( '%X', $timestamp );
+    }
+    /**
+     * Returns a short formatted date time from timezone.
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @static
+     * @param   mixed   $datetime   Optional. Timestamp or formatted date time. Default: null
+     * @return  string  Formatted date time.
+     */
+    public static function getShortDateTime( $datetime = null )
+    {
+        $timestamp = self::getTimestampFromFormat( $datetime );
+        return self::getShortDate( $timestamp ) . ' ' . self::getShortTime( $timestamp );
+    }
+    /**
+     * Returns a long formatted date from timezone.
+     * Supported locales: en_US, en_GB, es_ES, de_DE
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @static
+     * @param   mixed   $date   Optional. Timestamp or formatted date time. Default: null
+     * @return  string  Formatted date.
+     */
+    public static function getLongDate( $date = null )
+    {
+        $timestamp = self::getTimestampFromFormat( $date );
+
+        $locale = I18N::getLocale();
+        $output = null;
+        switch ( $locale ) {
+            case 'en_US':
+            case 'en_GB':
+                $output = strftime( '%B, ', $timestamp )
+                    . trim( self::getOrdinalNumber( strftime( '%e', $timestamp ) ) )
+                    . strftime( ' %Y', $timestamp );
+                break;
+            case 'es_ES':
+                $output = strftime( '%A ', $timestamp )
+                    . trim( strftime( '%e', $timestamp ) )
+                    . strftime( ' de %B de %Y', $timestamp );
+                break;
+            default:
+                $output = strftime( '%A, ', $timestamp )
+                    . trim( strftime( '%e.', $timestamp ) )
+                    . strftime( ' %B %Y', $timestamp );
+                break;
+        }
+
+        return $output;
+    }
+    /**
+     * Returns a short formatted date time from timezone.
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @static
+     * @param   mixed   $datetime   Optional. Timestamp or formatted date time. Default: null
+     * @return  string  Formatted date time.
+     */
+    public static function getLongDateTime( $datetime = null )
+    {
+        $timestamp = self::getTimestampFromFormat( $datetime );
+
+        return self::getLongDate( $timestamp ) . ', ' . self::getShortTime( $datetime );
+    }
+    /**
+     * Returns a short formatted string from timezone.
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @static
+     * @param   string  $format     Format to use.
+     * @param   mixed   $datetime   Optional. Timestamp or formatted date time. Default: null
+     * @return  string  Formatted date time string.
+     */
+    public static function getFormattedTimestamp( $format, $datetime = null )
+    {
+        $timestamp = self::getTimestampFromFormat( $datetime );
+
+        return strftime( $format, $timestamp );
+    }
+    /**
+     * Returns a unix timestamp from a formatted date time string.
+     *
+     * @since   0.0.1
+     *
+     * @access  protected
+     * @static
+     * @param   string  $formatted  Date time string to use.
+     * @return  int     Unix timestamp.
+     */
+    protected static function getTimestampFromFormat( $formatted )
+    {
+        if ( ! is_numeric( $formatted ) ) {
+            $dt = new self( $formatted );
+            return $dt->getTimestamp();
+        }
+
+        return $formatted;
+    }
+    /**
+     * Returns the ordinal version of a number.
+     *
+     * @since   0.0.1
+     *
+     * @access  protected
+     * @static
+     * @param   numeric $number The number to use.
+     * @return  string  The ordinal formatted number.
+     */
+    protected static function getOrdinalNumber( $number )
+    {
+        $ends = array( 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th' );
+        if ( (($number % 100) >= 11) && (($number % 100) <= 13) )
+            return $number . 'th';
+        else
+            return $number . $ends[$number % 10];
+    }
 }
