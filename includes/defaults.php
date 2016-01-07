@@ -50,6 +50,17 @@ if ( ! defined( 'DEBUG_LOG_FILE' ) )
  */
 define( 'REQUIRED_PHP_VERSION', '5.4' );
 /**
+ * Sessions
+ */
+if ( ! defined( 'SESSION_SAVE_PATH' ) )
+    define( 'SESSION_SAVE_PATH', ABSPATH . '/temp/sessions' );
+if ( ! defined( 'SESSION_GC_PROB' ) )
+    define( 'SESSION_GC_PROB', 1 );
+if ( ! defined( 'SESSION_GC_DIV' ) )
+    define( 'SESSION_GC_DIV', 100 );
+if ( ! defined( 'SESSION_MAX_LIFETIME' ) )
+    define( 'SESSION_MAX_LIFETIME', 1440 );
+/**
  * Others
  */
 $timers = array();
