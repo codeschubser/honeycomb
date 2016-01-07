@@ -32,7 +32,25 @@ namespace de\codeschubser\honeycomb\core\models;
  * @license     http://www.opensource.org/licenses/mit-license.html  MIT License
  * @version     $Id: DateTime.php,v 0.0.1 07.01.2016 11:10:09 mitopp Exp $;
  */
-class DateTime extends DateTime
+class DateTime extends \DateTime
 {
-    
+    /**
+     * CONSTRUCTOR
+     * Build a new DateTime object
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @param   string|int  $time       Optional. A date/time string. Default: now
+     * @param   string|null $timezone   Optional. Timezone identifier or DateTimeZone object. Default: null
+     * @return  void
+     */
+    public function __construct( $time = 'now', $timezone = null )
+    {
+        if ( null === $timezone || ! $timezone instanceof DateTimeZone ) {
+            $timezone = new DateTimeZone();
+        }
+
+        parent::__construct( $time, $timezone );
+    }
 }
