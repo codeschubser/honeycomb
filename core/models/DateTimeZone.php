@@ -34,5 +34,51 @@ namespace de\codeschubser\honeycomb\core\models;
  */
 class DateTimeZone extends \DateTimeZone
 {
-    
+    /**
+     * CONSTRUCTOR
+     * Build a new DateTimeZone object.
+     * Store user timezone identifier in session.
+     *
+     * @since   0.0.1
+     *
+     * @see     getTimeZone()
+     *
+     * @access  public
+     * @param   string|null $timezone   Optional. Timezone identifier to use. Default: null
+     * @return  void
+     */
+    public function __construct( $timezone = null )
+    {
+        if ( null === $timezone ) {
+            $timezone = self::getTimeZone();
+        }
+
+        // Store timezone in session
+        $_SESSION['timezone'] = $timezone;
+
+        parent::__construct( $timezone );
+    }
+    /**
+     * Returns the timezone identifier from session or from defaults.
+     *
+     * @since   0.0.1
+     *
+     * @access  public
+     * @static
+     * @return  string  Timezone identifier to use.
+     */
+    public static function getTimeZone()
+    {
+        $timezone = null;
+
+        if ( isset( $_SESSION['timezone'] ) ) {
+            $timezone = $_SESSION['timezone'];
+        }
+
+        if ( ! $timezone ) {
+            $timezone = TIMEZONE;
+        }
+
+        return $timezone;
+    }
 }
