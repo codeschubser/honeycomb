@@ -44,17 +44,18 @@ abstract class I18N
      *
      * @access  public
      * @static
-     * @param   string  $locale Optional. Locale to set. If not set, the locale was detected from
-     *                          session and browser setting. Default: null
+     * @param   string  $locale     Optional. Locale to set. If not set, the locale was detected from
+     *                              session and browser setting. Default: null
+     * @param   string  $charset    Optional. The charset to use. Default: utf-8
      * @return  bool
      */
-    public static function setLocale( $locale = null )
+    public static function setLocale( $locale = null, $charset = 'utf-8' )
     {
         if ( null === $locale || ! self::isValid( $locale ) ) {
             $locale = self::getLocale();
         }
 
-        $locale_charset = sprintf( '%1$s.%2$s', $locale, 'utf-8' );
+        $locale_charset = sprintf( '%1$s.%2$s', $locale, $charset );
 
         putenv( 'LC_ALL=' . $locale_charset );
         putenv( 'LANG=' . $locale_charset );
