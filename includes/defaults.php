@@ -81,4 +81,7 @@ if ( ! defined( 'DB_COLL' ) )
 if ( ! defined( 'LANGUAGE' ) ) {
     define( 'LANGUAGE', 'en_US' );
 }
+if ( ! defined( 'TIMEZONE' ) ) {
+    define( 'TIMEZONE', 'UTC' );
+}
 $timers = array();
