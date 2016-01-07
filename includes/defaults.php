@@ -61,6 +61,24 @@ if ( ! defined( 'SESSION_GC_DIV' ) )
 if ( ! defined( 'SESSION_MAX_LIFETIME' ) )
     define( 'SESSION_MAX_LIFETIME', 1440 );
 /**
+ * Database
+ */
+if ( ! defined( 'DB_HOST' ) )
+    define( 'DB_HOST', 'localhost' );
+if ( ! defined( 'DB_USER' ) )
+    define( 'DB_USER', '' );
+if ( ! defined( 'DB_PASS' ) )
+    define( 'DB_PASS', '' );
+if ( ! defined( 'DB_NAME' ) )
+    define( 'DB_NAME', '' );
+if ( ! defined( 'DB_CHAR' ) )
+    define( 'DB_CHAR', 'utf8' );
+if ( ! defined( 'DB_COLL' ) )
+    define( 'DB_COLL', 'utf8_general_ci' );
+/**
  * Others
  */
+if ( ! defined( 'LANGUAGE' ) ) {
+    define( 'LANGUAGE', 'en_US' );
+}
 $timers = array();
