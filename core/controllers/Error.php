@@ -192,13 +192,14 @@ class Error
      */
     protected function buildErrorDetails()
     {
-        $backtrace = debug_backtrace();
-        if ( $backtrace && 1 < count( $backtrace ) ) {
-            // Remove file where the error is occured
-            array_shift( $backtrace );
+        // Get reverse sorted backtrace
+        $backtrace = array_reverse( debug_backtrace() );
+        array_pop( $backtrace ); // Remove this method
+        array_pop( $backtrace ); // Remove error handler
+        if ( !empty( $backtrace ) ) {
             $output .= "Stack trace:"
                 . PHP_EOL;
-            for ( $i = 1, $len = count( $backtrace ); $i < $len; $i ++ ) {
+            for ( $i = 0, $len = count( $backtrace ); $i < $len; $i ++ ) {
                 $output .= "\t#"
                     . $i
                     . "\t"
