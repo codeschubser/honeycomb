@@ -39,6 +39,8 @@ if ( ! defined( 'DEBUG' ) )
     define( 'DEBUG', true );
 if ( ! defined( 'DEBUG_DISPLAY' ) )
     define( 'DEBUG_DISPLAY', false );
+if ( ! defined( 'DEBUG_DETAILS' ) )
+    define( 'DEBUG_DETAILS', false );
 if ( ! defined( 'DEBUG_LOG' ) )
     define( 'DEBUG_LOG', true );
 if ( ! defined( 'DEBUG_LOG_FILE' ) )
