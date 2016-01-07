@@ -196,7 +196,7 @@ class Error
         $backtrace = array_reverse( debug_backtrace() );
         array_pop( $backtrace ); // Remove this method
         array_pop( $backtrace ); // Remove error handler
-        if ( !empty( $backtrace ) ) {
+        if ( ! empty( $backtrace ) ) {
             $output .= "Stack trace:"
                 . PHP_EOL;
             for ( $i = 0, $len = count( $backtrace ); $i < $len; $i ++ ) {
@@ -205,8 +205,10 @@ class Error
                     . "\t"
                     . "triggered at ";
                 if ( isset( $backtrace[$i]['class'] ) ) {
-                    $output .= $backtrace[$i]['class']
-                        . "::";
+                    $method = new \ReflectionMethod( $backtrace[$i]['class'],
+                        $backtrace[$i]['function'] );
+                    $output .= $backtrace[$i]['class'];
+                    $output .= ($method->isStatic()) ? "::" : "->";
                 }
                 if ( isset( $backtrace[$i]['function'] ) ) {
                     $output .= $backtrace[$i]['function']
