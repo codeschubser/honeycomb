@@ -82,7 +82,7 @@ class Session extends \SessionHandler
      * @access  public
      * @param   string  $save_path  The path where to store/retrieve the session
      * @param   string  $session_id The session name
-     * @return  bool                True on success, false on failure
+     * @return  bool    True on success, false on failure
      */
     public function open( $save_path, $session_id )
     {
@@ -107,7 +107,7 @@ class Session extends \SessionHandler
      *
      * @access  public
      * @param   string  $session_id The session id to read data for
-     * @return  mixed               Encoded string or empty string on failure
+     * @return  mixed   Encoded string or empty string on failure
      */
     public function read( $session_id )
     {
@@ -123,7 +123,7 @@ class Session extends \SessionHandler
      * @access  public
      * @param   string  $session_id     The session id
      * @param   string  $session_data   The encoded session data
-     * @return  bool                    True on success, false on failure
+     * @return  bool    True on success, false on failure
      */
     public function write( $session_id, $session_data )
     {
@@ -138,7 +138,7 @@ class Session extends \SessionHandler
      *
      * @access  public
      * @param   string  $session_id The session ID being destroyed
-     * @return  bool                True on success, false on failure
+     * @return  bool    True on success, false on failure
      */
     public function destroy( $session_id )
     {
@@ -150,8 +150,8 @@ class Session extends \SessionHandler
      * @since   0.0.1
      *
      * @access  public
-     * @param   int $maxlifetime    Lifetime of session
-     * @return  bool                True on success, false on failure
+     * @param   int     $maxlifetime    Lifetime of session
+     * @return  bool    True on success, false on failure
      */
     public function garbage( $maxlifetime )
     {
