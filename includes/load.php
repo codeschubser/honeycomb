@@ -1,6 +1,7 @@
 <?php
 
-use de\codeschubser\honeycomb\core\controllers\Autoload;
+use de\codeschubser\honeycomb\core\controllers\Autoload,
+    de\codeschubser\honeycomb\core\controllers\Error;
 
 /**
  * The MIT License
@@ -73,3 +74,7 @@ $loader->addNamespace( 'de\codeschubser\honeycomb\core\views', ABSPATH . '/core/
  * Start global timer
  */
 timer_start();
+/**
+ * Start error handler
+ */
+new Error();
